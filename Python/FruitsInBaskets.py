@@ -1,5 +1,5 @@
 # Fruits in baskets
-#https://leetcode.com/problems/fruit-into-baskets/description/
+# https://leetcode.com/problems/fruit-into-baskets/description/
 # Time Complexity: O(n)
 # Space Complexity: O(1)
 class FruitsIntoBaskets:
