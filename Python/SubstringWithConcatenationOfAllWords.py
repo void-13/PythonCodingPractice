@@ -19,6 +19,7 @@ class SubstringWithConcatenationOfAllWords:
     Time Complexity: O(m*n) where m is the length of the string and n is the length of each word
     Space Complexity: O(n) where n is the number of words
     """
+
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
         result = []
 
@@ -44,7 +45,7 @@ class SubstringWithConcatenationOfAllWords:
 
             while right + word_len <= str_len:
                 # extract next word from right pointer
-                substring = s[right: right + word_len]
+                substring = s[right : right + word_len]
                 right += word_len
 
                 if substring in total_word_frequency:
@@ -54,7 +55,7 @@ class SubstringWithConcatenationOfAllWords:
 
                     # if word is overused, shrink window from left until valid
                     while window_frequency[substring] > total_word_frequency[substring]:
-                        left_word = s[left: left + word_len]
+                        left_word = s[left : left + word_len]
                         window_frequency[left_word] -= 1
                         count -= 1
                         left += word_len
@@ -63,7 +64,7 @@ class SubstringWithConcatenationOfAllWords:
                     if count == total_words:
                         result.append(left)
                         # shrink window from left to continue searching
-                        left_word = s[left: left + word_len]
+                        left_word = s[left : left + word_len]
                         window_frequency[left_word] -= 1
                         count -= 1
                         left += word_len
@@ -79,6 +80,10 @@ class SubstringWithConcatenationOfAllWords:
 
 # Test
 sol = SubstringWithConcatenationOfAllWords()
-print(sol.findSubstring("barfoothefoobarman", ["foo", "bar"]))                  # [0, 9]
-print(sol.findSubstring("wordgoodgoodgoodbestword", ["word","good","best","word"]))  # []
-print(sol.findSubstring("barfoofoobarthefoobarman", ["bar","foo","the"]))       # [6, 9, 12]
+print(sol.findSubstring("barfoothefoobarman", ["foo", "bar"]))  # [0, 9]
+print(
+    sol.findSubstring("wordgoodgoodgoodbestword", ["word", "good", "best", "word"])
+)  # []
+print(
+    sol.findSubstring("barfoofoobarthefoobarman", ["bar", "foo", "the"])
+)  # [6, 9, 12]
